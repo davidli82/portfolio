@@ -1,6 +1,193 @@
+:root {
+  --color-accent: oklch(50% 0.15 250);
+  --color-border: oklch(80% 0.03 200);
+  accent-color: var(--color-accent);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  /* Set line height to 1.5 times the font size
-	   and use the OS’s UI font as the website font
-	 */
   font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin-inline: auto;
+  padding: 1em;
+  color: oklch(25% 0.02 250);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+body > img {
+  width: 24rem;
+  border-radius: 0.5em;
+}
+
+a {
+  color: var(--color-accent);
+  overflow-wrap: anywhere;
+}
+
+nav {
+  display: flex;
+  margin-bottom: 2em;
+  border-bottom: 1px solid var(--color-border);
+}
+
+nav a {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5em;
+}
+
+nav a.current {
+  border-bottom: 0.4em solid var(--color-border);
+  padding-bottom: 0.1em;
+}
+
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  padding-bottom: 0.1em;
+  background-color: oklch(from var(--color-accent) 95% 0.025 h);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: 400%;
+  margin-block: 0.5em;
+}
+
+
+input, textarea, button {
+  font: inherit;
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1em;
+}
+
+form label {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  align-items: baseline;
+}
+
+input, textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 0.5em;
+  border: 1px solid var(--color-border);
+  border-radius: 0.25em;
+}
+
+textarea {
+  resize: vertical;
+}
+
+form button {
+  grid-column: 1 / -1;
+  padding: 0.65em 1em;
+  border: 0;
+  border-radius: 0.25em;
+  background: var(--color-accent);
+  color: white;
+  cursor: pointer;
+}
+
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(15em, 100%), 1fr));
+  gap: 1em;
+}
+
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  min-width: 0;
+}
+
+.projects h2, .projects p {
+  margin: 0;
+}
+
+.projects img {
+  width: 100%;
+}
+
+
+.resume > header {
+  margin-bottom: 2em;
+}
+
+.resume > section {
+  display: grid;
+  grid-template-columns: 10em minmax(0, 1fr);
+  gap: 1.5em;
+  padding-block: 1.5em;
+  border-top: 1px solid var(--color-border);
+}
+
+.resume section > h2 {
+  margin: 0;
+  color: var(--color-accent);
+}
+
+.resume article h3 {
+  margin-top: 0;
+}
+
+.resume section > ul {
+  margin-top: 0;
+}
+
+.resume time {
+  color: oklch(45% 0.02 250);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 40em) {
+  h1 {
+    font-size: 300%;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    flex-basis: 5em;
+  }
+
+  form, .resume > section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  form label {
+    gap: 0.35em;
+  }
+
+  .resume > section {
+    gap: 0.75em;
+  }
 }

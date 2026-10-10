@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact David Li</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <nav>
   <a href="../">Home</a>
   <a href="../projects/">Projects</a>
   <a href="../resume/">Resume</a>
-  <a href="../contact/">Contact</a>
-  <a href="https://github.com/davidli82" target="_blank">GitHub</a>
+  <a href="../contact/" class="current" aria-current="page">Contact</a>
+  <a href="https://github.com/davidli82" target="_blank" rel="noopener noreferrer">GitHub</a>
 </nav>
     <h1>Contact David Li</h1>
     <form action="mailto:dal079@ucsd.edu" method="POST" enctype="text/plain">
@@ -27,7 +28,7 @@
 
     <label>
       Message:
-      <textarea name="body"></textarea>
+      <textarea name="body" rows="6"></textarea>
     </label>
 
     <button>Submit</button>
