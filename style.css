@@ -1,6 +1,7 @@
 :root {
-  --color-accent: oklch(50% 0.15 250);
-  --color-border: oklch(80% 0.03 200);
+  color-scheme: light dark;
+  --color-accent: light-dark(oklch(50% 0.15 250), oklch(75% 0.12 250));
+  --color-border: oklch(50% 0.1 200 / 40%);
   accent-color: var(--color-accent);
 }
 
@@ -12,8 +13,9 @@ body {
   font: 100%/1.5 system-ui;
   max-width: 100ch;
   margin-inline: auto;
-  padding: 1em;
-  color: oklch(25% 0.02 250);
+  padding: 3.5em 1em 1em;
+  background-color: canvas;
+  color: canvastext;
 }
 
 img {
@@ -54,7 +56,7 @@ nav a.current {
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 0.1em;
-  background-color: oklch(from var(--color-accent) 95% 0.025 h);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
 :focus-visible {
@@ -74,8 +76,15 @@ h1 {
 }
 
 
-input, textarea, button {
+input, textarea, button, select {
   font: inherit;
+}
+
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
 }
 
 form {
@@ -108,7 +117,7 @@ form button {
   padding: 0.65em 1em;
   border: 0;
   border-radius: 0.25em;
-  background: var(--color-accent);
+  background: oklch(45% 0.15 250);
   color: white;
   cursor: pointer;
 }
@@ -162,7 +171,7 @@ form button {
 }
 
 .resume time {
-  color: oklch(45% 0.02 250);
+  color: color-mix(in oklch, canvastext 75%, canvas);
   font-variant-numeric: tabular-nums;
 }
 
