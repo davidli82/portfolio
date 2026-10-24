@@ -136,12 +136,42 @@ form button {
   min-width: 0;
 }
 
-.projects h2, .projects p {
+.projects h2, .projects h3, .projects p {
   margin: 0;
 }
 
 .projects img {
   width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.project-year {
+  display: block;
+  margin-top: 0.5em;
+  color: color-mix(in oklch, canvastext 70%, canvas);
+  font-size: 0.9em;
+}
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5em;
+  padding-block: 1em;
+  border-block: 1px solid var(--color-border);
+  text-align: center;
+}
+
+#profile-stats dt {
+  grid-row: 1;
+  font-size: 0.85em;
+}
+
+#profile-stats dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: 1.75em;
+  font-weight: bold;
 }
 
 
@@ -164,6 +194,10 @@ form button {
 
 .resume article h3 {
   margin-top: 0;
+}
+
+.resume article + article {
+  margin-top: 2em;
 }
 
 .resume section > ul {

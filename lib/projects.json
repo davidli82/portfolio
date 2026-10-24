@@ -1,0 +1,76 @@
+[
+  {
+    "title": "Bridge",
+    "year": 2026,
+    "image": "images/project-placeholder.svg",
+    "url": "https://bridge-jobs.com",
+    "description": "Built an AI assessment generator with LangChain, rule-based checks, and LLM quality review to reduce invalid outputs and improve consistency. Implemented agentic interviews by indexing code submissions in Pinecone and integrating the ElevenLabs Agent API. June\u2013September 2026."
+  },
+  {
+    "title": "EMG Piano Decoder",
+    "year": 2026,
+    "image": "images/project-placeholder.svg",
+    "description": "As a Triton Neurotech team member, engineered a real-time system that translates four-channel forearm EMG signals into piano key presses across one octave. Used MediaPipe Hands for ground-truth labels and fine-tuned a Vision Transformer pretrained on emg2pose to detect individual notes and chords. January\u2013March 2026."
+  },
+  {
+    "title": "TritonPlanner",
+    "year": 2025,
+    "image": "images/project-placeholder.svg",
+    "url": "https://tritonplanner.com",
+    "description": "Scraped and cleaned more than 7,000 UCSD course listings using Selenium and organized them in Pinecone vector databases. Built a RAG course assistant with OpenAI and Pinecone, and helped develop a React planner with a drag-and-drop four-year schedule, course search, and graduation requirements. January\u2013April 2025."
+  },
+  {
+    "title": "Lab 4: Data-driven Portfolio",
+    "year": 2026,
+    "image": "images/project-placeholder.svg",
+    "description": "Loaded project cards from JSON with reusable JavaScript modules and added live GitHub profile statistics."
+  },
+  {
+    "title": "Lab 3: Interactive Portfolio",
+    "year": 2026,
+    "image": "images/project-placeholder.svg",
+    "description": "Generated site navigation with JavaScript and added a persistent theme selector and improved email contact form."
+  },
+  {
+    "title": "Lab 2: Responsive Portfolio Styling",
+    "year": 2026,
+    "image": "images/project-placeholder.svg",
+    "description": "Styled the portfolio with CSS Flexbox, Grid, and subgrid, including responsive project cards and a resume layout."
+  },
+  {
+    "title": "Lab 1: Personal Portfolio Website",
+    "year": 2026,
+    "image": "images/project-placeholder.svg",
+    "description": "Created a personal website with HTML, a portrait, project and resume pages, and a contact form."
+  },
+  {
+    "title": "Data Cleaning Study (Placeholder)",
+    "year": 2025,
+    "image": "images/project-placeholder.svg",
+    "description": "Placeholder for a future project entry. The title and year are sample data; replace them with an actual project, its date, and findings."
+  },
+  {
+    "title": "Statistical Analysis (Placeholder)",
+    "year": 2024,
+    "image": "images/project-placeholder.svg",
+    "description": "Placeholder for a future project entry. The title and year are sample data; replace them with an actual project, its date, and findings."
+  },
+  {
+    "title": "Dashboard Design (Placeholder)",
+    "year": 2024,
+    "image": "images/project-placeholder.svg",
+    "description": "Placeholder for a future project entry. The title and year are sample data; replace them with an actual project, its date, and findings."
+  },
+  {
+    "title": "Cognitive Science Study (Placeholder)",
+    "year": 2024,
+    "image": "images/project-placeholder.svg",
+    "description": "Placeholder for a future project entry. The title and year are sample data; replace them with an actual project, its date, and findings."
+  },
+  {
+    "title": "Data Exploration Notebook (Placeholder)",
+    "year": 2024,
+    "image": "images/project-placeholder.svg",
+    "description": "Placeholder for a future project entry. The title and year are sample data; replace them with an actual project, its date, and findings."
+  }
+]

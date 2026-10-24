@@ -1,5 +1,79 @@
 console.log('IT’S ALIVE!');
 
+// Lab 4: shared data loading and project rendering.
+export async function fetchJSON(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching or parsing JSON data:', error);
+    throw error;
+  }
+}
+
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+  if (!(containerElement instanceof Element)) {
+    throw new TypeError('A valid project container is required.');
+  }
+  if (!Array.isArray(projects)) {
+    throw new TypeError('Projects must be an array.');
+  }
+  if (!/^h[1-6]$/.test(headingLevel)) {
+    throw new TypeError('Heading level must be h1 through h6.');
+  }
+
+  containerElement.replaceChildren();
+  if (projects.length === 0) {
+    const message = document.createElement('p');
+    message.textContent = 'No projects to display yet.';
+    containerElement.append(message);
+    return;
+  }
+
+  const fallbackImage = new URL('images/project-placeholder.svg', import.meta.url).href;
+  for (const project of projects) {
+    const article = document.createElement('article');
+    // Template structure is shared; data is inserted as text, not parsed as HTML.
+    article.innerHTML = `
+      <${headingLevel}></${headingLevel}>
+      <img loading="lazy" width="640" height="360">
+      <p class="project-description"></p>
+    `;
+    const title = project?.title || 'Untitled project';
+    const heading = article.querySelector(headingLevel);
+    if (project?.url && /^https?:\/\//.test(project.url)) {
+      const link = document.createElement('a');
+      link.href = project.url;
+      link.textContent = title;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      heading.append(link);
+    } else {
+      heading.textContent = title;
+    }
+    const image = article.querySelector('img');
+    image.alt = project?.imageAlt || `Illustration for ${title}`;
+    image.addEventListener('error', () => { image.src = fallbackImage; }, { once: true });
+    image.src = project?.image ? new URL(project.image, import.meta.url).href : fallbackImage;
+    const description = article.querySelector('p');
+    description.textContent = project?.description || 'Description coming soon.';
+    if (project?.year) {
+      const year = document.createElement('span');
+      year.className = 'project-year';
+      year.textContent = project.year;
+      description.append(year);
+    }
+    containerElement.appendChild(article);
+  }
+}
+
+export async function fetchGitHubData(username) {
+  return fetchJSON(`https://api.github.com/users/${encodeURIComponent(username)}`);
+}
+
 function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
