@@ -162,8 +162,12 @@ form button {
 }
 
 #projects-pie-plot {
-  width: min(100%, 20em);
-  flex: 0 1 20em;
+  display: block;
+  width: 20em;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  flex: 0 0 auto;
   overflow: visible;
 }
 
