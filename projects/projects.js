@@ -72,6 +72,19 @@ function toggleYear(year) {
   updateProjects();
 }
 
+function refreshChart(projectsGiven) {
+  try {
+    renderPieChart(projectsGiven);
+    updateSelection();
+    document.querySelector('.chart-empty').textContent = 'No projects match your search.';
+  } catch (error) {
+    console.error('Unable to render the project chart:', error);
+    const message = document.querySelector('.chart-empty');
+    message.hidden = false;
+    message.textContent = `Chart could not be displayed: ${error.message}. Project search is still available.`;
+  }
+}
+
 function updateProjects() {
   // Both filters share this pipeline, regardless of which control changed first.
   const searchMatches = projects.filter(project =>
@@ -90,8 +103,6 @@ try {
   projects = await fetchJSON(new URL('../lib/projects.json', import.meta.url));
   colors.domain([...new Set(projects.map(project => String(project.year)))].sort(d3.descending));
   projectsTitle.textContent = `${projects.length} Projects by David Li`;
-  renderPieChart(projects);
-  updateProjects();
   searchInput.disabled = false;
   searchInput.addEventListener('input', event => {
     query = event.target.value.toLowerCase();
@@ -99,9 +110,12 @@ try {
       Object.values(project).join('\n').toLowerCase().includes(query));
     // Clear a selection that no longer exists in the search results.
     if (!searchMatches.some(project => String(project.year) === selectedYear)) selectedYear = null;
-    renderPieChart(searchMatches);
+    refreshChart(searchMatches);
     updateProjects();
   });
-} catch {
+  updateProjects();
+  refreshChart(projects);
+} catch (error) {
+  console.error('Unable to initialize projects:', error);
   projectsContainer.textContent = 'Projects could not be loaded. Please try refreshing the page.';
 }
